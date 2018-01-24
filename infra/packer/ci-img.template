@@ -1,0 +1,17 @@
+{
+  "builders" : [{
+    "type" : "amazon-ebs",
+    "region" : "ap-northeast-1",
+    "instance_type" : "t2.micro",
+    "source_ami" : "ami-cf1479a9",
+    "ssh_username" : "centos",
+    "ami_name" : "ci-img-template{{isotime | clean_ami_name}}"
+  }],
+  "provisioners" : [{
+    "type" : "ansible",
+    "extra_arguments" : [
+      "-b"
+    ],
+    "playbook_file" : "../ansible/ci.yml"
+  }]
+}
