@@ -1,0 +1,5 @@
+- name: node-app template image 
+  hosts: all
+  become: yes
+  roles:
+    - node-app

@@ -1,0 +1,12 @@
+- name: ci template image 
+  hosts: all
+  become: yes
+  roles:
+    - jenkins
+    - serverspec
+    - ansible
+    - nginx
+#   - packer
+#   - terraform
+#   - consul
+

@@ -1,0 +1,5 @@
+- name: golden template image 
+  hosts: all
+  become: yes
+  roles:
+    - common

@@ -1,0 +1,10 @@
+- name: download nvm installer
+  get_url: 
+    url  : https://raw.githubusercontent.com/creationix/nvm/v0.26.1/install.sh
+    dest : /tmp/nvm_installer.sh
+    owner: root
+    group: root
+    mode : 0655
+
+- name: install node
+  shell: /tmp/nvm_installer.sh && source /root/.bashrc && nvm install stable && nvm alias default stable

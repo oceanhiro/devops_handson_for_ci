@@ -1,0 +1,15 @@
+- name: install utils
+  yum : name={{ item }} state=present
+  with_items:
+    - vim
+    - git
+    - tcpdump
+    - net-tools
+    - epel-release
+
+- name: set up ntp
+  template: src=chrony.conf dest=/etc/chrony.conf owner=root group=root mode=0644 
+
+- name: set timezone to Asia/Tokyo
+  timezone:
+    name: Asia/Tokyo
