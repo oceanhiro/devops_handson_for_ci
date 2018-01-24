@@ -154,7 +154,7 @@ resource "aws_security_group_rule" "ingress_tcp_8080_cidr" {
 
 // CI Server.
 resource "aws_instance" "ci-server" {
-    ami           = "ami-8ef55ee8" 
+    ami           = "ami-ef650889" 
     instance_type = "t2.micro" 
     key_name      = "keypair_ocean_key.pem" 
     vpc_security_group_ids = [
