@@ -5,7 +5,8 @@
     "instance_type" : "t2.micro",
     "source_ami" : "ami-e4599a82",
     "ssh_username" : "centos",
-    "ami_name" : "golden-img-template{{isotime | clean_ami_name}}"
+    "ami_name" : "golden-img-template{{isotime | clean_ami_name}}",
+    "ami_description" : "This AMI is Base image for all other AMI.Disables selinux and installs utility tools."
   }],
   "provisioners" : [{
     "type" : "ansible",

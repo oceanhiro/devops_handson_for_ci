@@ -3,9 +3,10 @@
     "type" : "amazon-ebs",
     "region" : "ap-northeast-1",
     "instance_type" : "t2.micro",
-    "source_ami" : "ami-cf1479a9",
+    "source_ami" : "ami-d2a9c6b4",
     "ssh_username" : "centos",
-    "ami_name" : "ci-img-template{{isotime | clean_ami_name}}"
+    "ami_name" : "ci-img-template{{isotime | clean_ami_name}}",
+    "ami_description" : "This AMI is CI server.Installed Jenkis,Serverspec,Ansible,etc..."
   }],
   "provisioners" : [{
     "type" : "ansible",
