@@ -19,6 +19,9 @@
     name : jenkins
     state: installed 
 
+- name: set jenkins conf
+  template: src=jenkins dest=/etc/sysconfig owner=root group=root mode=0600 
+
 - name: start jenkins
   service:
     name : jenkins

@@ -5,7 +5,6 @@
     - jenkins
     - serverspec
     - ansible
-    - nginx
 #   - packer
 #   - terraform
 #   - consul
