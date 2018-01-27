@@ -122,16 +122,6 @@ resource "aws_security_group_rule" "egress_all_all_all" {
   type              = "egress"
 }
 
-// Allow TCP:80 (HTTP)
-resource "aws_security_group_rule" "ingress_tcp_80_cidr" {
-  security_group_id = "${aws_security_group.web_app_sg.id}"
-  from_port         = 80
-  to_port           = 80
-  protocol          = "tcp"
-  cidr_blocks       = ["0.0.0.0/0"]
-  type              = "ingress"
-}
-
 // Allow TCP:443 (HTTPS)
 resource "aws_security_group_rule" "ingress_tcp_443_cidr" {
   security_group_id = "${aws_security_group.web_app_sg.id}"
@@ -142,19 +132,9 @@ resource "aws_security_group_rule" "ingress_tcp_443_cidr" {
   type              = "ingress"
 }
 
-// Allow TCP:8080 (HTTP-ALT)
-resource "aws_security_group_rule" "ingress_tcp_8080_cidr" {
-  security_group_id = "${aws_security_group.web_app_sg.id}"
-  from_port         = 8080
-  to_port           = 8080
-  protocol          = "tcp"
-  cidr_blocks       = ["0.0.0.0/0"]
-  type              = "ingress"
-}
-
 // CI Server.
 resource "aws_instance" "ci-server" {
-    ami           = "ami-ef650889" 
+    ami           = "ami-f6a7c890" 
     instance_type = "t2.micro" 
     key_name      = "keypair_ocean_key.pem" 
     vpc_security_group_ids = [
