@@ -122,11 +122,11 @@ resource "aws_security_group_rule" "egress_all_all_all" {
   type              = "egress"
 }
 
-// Allow TCP:443 (HTTPS)
+// Allow TCP:8443 (HTTPS)
 resource "aws_security_group_rule" "ingress_tcp_443_cidr" {
   security_group_id = "${aws_security_group.web_app_sg.id}"
-  from_port         = 443
-  to_port           = 443
+  from_port         = 8443
+  to_port           = 8443
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
   type              = "ingress"
