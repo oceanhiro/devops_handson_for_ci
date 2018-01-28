@@ -6,6 +6,6 @@
     - serverspec
     - ansible
     - packer
-#   - terraform
+    - terraform
 #   - consul
 

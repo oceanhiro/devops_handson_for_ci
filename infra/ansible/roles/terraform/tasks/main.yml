@@ -1,0 +1,12 @@
+- name: download terraform
+  get_url:
+    url: "{{ terraform_url }}"
+    dest: /tmp/terraform.zip
+
+- name: install terraform
+  unarchive:
+    src: /tmp/terraform.zip
+    dest: /usr/local/bin/
+    remote_src: yes
+
+
