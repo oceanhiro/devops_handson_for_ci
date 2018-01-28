@@ -1,0 +1,12 @@
+- name: download packer
+  get_url:
+    url: "{{ packer_url }}"
+    dest: /tmp/packer.zip
+
+- name: install packer
+  unarchive:
+    src: /tmp/packer.zip
+    dest: /usr/local/bin/
+    remote_src: yes
+
+
