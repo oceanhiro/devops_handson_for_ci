@@ -132,21 +132,35 @@ resource "aws_security_group_rule" "ingress_tcp_443_cidr" {
   type              = "ingress"
 }
 
+// Get ci-img-template id
+data "aws_ami" "ci-img-template" {
+  most_recent      = true
+  filter {
+    name   = "name"
+    values = ["ci-img-template*"]
+  }
+}
+
 // CI Server.
 resource "aws_instance" "ci-server" {
-    ami           = "ami-2a6e004c" 
-    instance_type = "t2.micro" 
-    key_name      = "keypair_ocean_key.pem" 
-    vpc_security_group_ids = [
-        "${aws_security_group.web_app_sg.id}",
-	"${aws_security_group.ssh_sg.id}"
-    ]
-    subnet_id = "${aws_subnet.public_a_for_ci.id}" 
-    associate_public_ip_address = "true" 
-    root_block_device = {
-        volume_size = "20" 
-    }
-    tags {
-        Name = "ci-server" 
-    }
+  ami           = "${data.aws_ami.ci-img-template.id}" 
+  instance_type = "t2.micro" 
+  key_name      = "keypair_ocean_key.pem" 
+  vpc_security_group_ids = [
+      "${aws_security_group.web_app_sg.id}",
+      "${aws_security_group.ssh_sg.id}"
+  ]
+  subnet_id = "${aws_subnet.public_a_for_ci.id}" 
+  associate_public_ip_address = "true" 
+  root_block_device = {
+      volume_size = "20" 
+  }
+  tags {
+      Name = "ci-server" 
+  }
 }
+
+output "public ip of ci-server" {
+  value = "${aws_instance.ci-server.public.ip}" 
+}
+
